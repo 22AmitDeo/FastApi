@@ -11,4 +11,6 @@ def read_root():
 def about():
     return {"data":{"About":"Made by Amit"}}
 
-
+@app.get("/blog/{id}")
+def getid(id:int):
+    return{"data":id}
