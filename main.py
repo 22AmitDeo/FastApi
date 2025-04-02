@@ -1,6 +1,6 @@
-from typing import Union
+from typing import Optional, Union
 from fastapi import FastAPI
-
+from pydantic import BaseModel
 app=FastAPI()
 
 @app.get("/")
@@ -24,4 +24,15 @@ def get_items(name: str, price: float = None):
 #Post 
 @app.post("/blogs")
 def pos(name):
-    return {"data": name}
+    return {"data": {'within':name}}
+
+
+#Blog
+class Blog(BaseModel):
+    title:str
+    body: str
+    published_at: Optional[bool]
+    
+@app.post('/blog')
+def create_blog(request:Blog):
+    return request
