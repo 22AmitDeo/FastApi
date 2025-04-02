@@ -20,3 +20,8 @@ def getid(id:int):
 @app.get("/items/")
 def get_items(name: str, price: float = None):
     return {"name": name, "price": price}
+
+#Post 
+@app.post("/blogs")
+def pos(name):
+    return {"data": name}
